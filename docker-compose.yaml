@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  zanwebservice:
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    command: app.py
+    volumes:
+      - ./logs:/logs
+      - ./mods:/mods
+      - ./static:/static
+      - ./templates:/templates
+      - ./wads:/wads
+      - ./zanbin:/zanbin
+    ports:
+      - "6556:6556"
+      - "10650-10700:10650-10700"
+    environment:
+      - LD_LIBRARY_PATH=/usr/games/zandronum
