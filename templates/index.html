@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zandronum Server Launcher</title>
+	<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <h1>Zandronum Server Launcher</h1>
+    <form method="post">
+        <!-- Add form fields for server parameters -->
+		
+		<!-- Server name -->
+		<label for="servername">Server Name:</label>
+		<input type="text" name="servername" id="servername" required>
+		
+		<input type="submit" value="Launch Server">
+		<!-- iwad choice -->
+      <form method="POST">
+        <div class="mb-3">
+		<h3>iWad</h3>
+          <label for="iwad" class="form-label"></label>
+          <select class="form-select" id="iwad" name="iwad">
+            {% for wad in iwad_files %}
+            <option value="{{ wad }}">{{ wad }}</option>
+            {% endfor %}
+		  </select>
+        </div>
+		<!-- Difficulty -->
+		<div>
+			<h3>Difficulty:</h3>
+			<select name="difficulty">
+				<option value="0">I'm too young to die</option>
+				<option value="1">Hey, not too rough</option>
+				<option value="2">Hurt me plenty</option>
+				<option value="3">Ultra-Violence</option>
+				<option value="4">Nightmare!</option>
+			</select>
+		</div>
+		<!-- Game Mode -->
+		<div>
+			<h3>Game Mode:</h3>
+			<select name="game_mode">
+				<option value="0">Co-op</option>
+				<option value="1">Deathmatch</option>
+				<option value="2">Team Deathmatch</option>
+				<option value="3">Capture the Flag</option>
+			</select>
+		</div>
+		<!-- mods choice x5 -->
+		<h3>Mods</h3>
+		{% for i in range(5) %}
+        <label for="mod_{{ i }}">Mod {{ i+1 }}:</label>
+        <select name="mod_{{ i }}" id="mod_{{ i }}">
+            <option value="">None</option>
+            {% for mod in mods %}
+            <option value="{{ mod }}">{{ mod }}</option>
+            {% endfor %}
+        </select>
+        {% endfor %}
+		<!-- RCON Password -->
+		<h3>- Other options -</h3>
+		<div>
+			<label for="rcon_password">RCON Password:</label>
+			<input type="password" name="rcon_password" id="rcon_password" placeholder="Enter RCON password">
+		</div>		
+        
+		<!-- Flags -->
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>DMFlags</th>
+					<th>DMFlags2</th>
+					<th>CompatFlags</th>
+					<th>CompatFlags2</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% set max_length = [dmflags|length, dmflags2|length, compatflags|length, compatflags2|length]|max %}
+				{% for i in range(max_length) %}
+				<tr>
+					<td>
+						<!-- {% if i < dmflags|length %}-->
+						<label>
+							<input type="checkbox" name="dmflags" value="{{ dmflags[i].value }}">
+							{{ dmflags[i].description }}
+						</label>
+						{% endif %}
+					</td>
+					<td>
+						{% if i < dmflags2|length %}
+						<label>
+							<input type="checkbox" name="dmflags2" value="{{ dmflags2[i].value }}">
+							{{ dmflags2[i].description }}
+						</label>
+						{% endif %}
+					</td>
+					<td>
+						{% if i < compatflags|length %}
+						<label>
+							<input type="checkbox" name="compatflags" value="{{ compatflags[i].value }}">
+							{{ compatflags[i].description }}
+						</label>
+						{% endif %}
+					</td>
+					<td>
+						{% if i < compatflags2|length %}
+						<label>
+							<input type="checkbox" name="compatflags2" value="{{ compatflags2[i].value }}">
+							{{ compatflags2[i].description }}
+						</label>
+						{% endif %}
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		
+	</body>
+		<!-- Add more form fields for other parameters -->
+
+
+
+				<!-- servers list -->
+		{% for server in servers %}
+		<tr>
+			<td>{{ server['servername'] }}</td>
+			<td>{{ server['port'] }}</td>
+			<td>{{ server['start_time'].strftime('%Y-%m-%d %H:%M:%S') }}</td>
+			<td>{{ server['remaining_time'] }} seconds</td>
+		</tr>
+		{% endfor %}
+    </form>
+</body>
+</html>
+

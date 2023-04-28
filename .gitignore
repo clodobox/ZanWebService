@@ -1,0 +1,9 @@
+wads/*
+mods/*
+*.zip
+*.rar
+*.tar*
+*.7z
+*.log
+app-bal.py
+!.gitkeep
