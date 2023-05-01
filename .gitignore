@@ -6,4 +6,6 @@ mods/*
 *.7z
 *.log
 app-bal.py
+merdouille/*
+zanbin/*
 !.gitkeep
