@@ -7,10 +7,11 @@ RUN apt-get update --fix-missing && \
     apt update && \
     apt install -y python3 python3-werkzeug python3-flask zandronum-server && \
     rm -rf /var/lib/apt/lists/* && \
+    apt remove -y software-properties-common wget apt-utils
     apt clean
 RUN add-apt-repository 'deb http://debian.drdteam.org/ stable multiverse'
 RUN apt-get -y autoclean
 COPY app.py app.py
-RUN useradd -ms /bin/bash -u 1026 -g 100 user123
-USER user123
+#RUN useradd -ms /bin/bash -u 1026 -g 100 user123
+#USER user123
 ENTRYPOINT ["/bin/python3"]

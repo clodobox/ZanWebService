@@ -9,19 +9,15 @@ A lot of problems will never be solved.
 
 ## Features
 
-- Launch and manage multiple Zandronum servers simultaneously
+- Launch multiple Zandronum servers simultaneously
 - Support for custom mods and WAD files
 - Configurable server settings
-- Server status and logs displayed in real-time
-- Automatic cleanup of server logs
-- Server launch rate limiting per IP address
-- Integrated help documentationFeatures
+- Server launch rate limiting per IP address (it works behind a reverse proxy)
 
 ## Known issue
 
 - Zandronum servers never stop. The log scan and last connection detection function does not work
 - This code does not use a WSGI server. It should not be used as is on a server open to the web
-- The server name cannot contain any whitespace. The command is not between quotation marks.
 
 ## Getting Started
 
@@ -31,6 +27,7 @@ A lot of problems will never be solved.
 - Zandronum server executable
 
 ## Installation
+
 ### Installation without docker
 
 1. Clone the repository or download the source code.

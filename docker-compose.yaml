@@ -17,4 +17,7 @@ services:
       - "6556:6556"
       - "10650-10700:10650-10700"
     environment:
-      - LD_LIBRARY_PATH=/usr/games/zandronum
+      - LD_LIBRARY_PATH="/zanbin"
+      - next_available_port=10650
+      - last_available_port=10700
+      - zandronum_server_path=./zanbin/zandronum-server
