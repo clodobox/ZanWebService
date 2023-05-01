@@ -1,9 +1,12 @@
 # Zandronum Server Launcher
 
-This is a simple server launcher web application for Zandronum, a multiplayer source port for the classic first-person shooter, Doom. The application is built using Python Flask, and allows users to launch and manage multiple Zandronum servers from a web interface.
+This is a simple server launcher web application for Zandronum, a multiplayer source port for the classic first-person shooter, Doom. The application is built using Python Flask, and allows users to launch ~~and manage~~ multiple Zandronum servers from a web interface.
 
-This is a personal project just for fun.
+This is a personal project intended to be executed on a Synology for **fun only**.
+
 A lot of problems will never be solved.
+
+**No security aspects have been considered.**
 
 **Use at your own risk !!!**
 
@@ -16,15 +19,18 @@ A lot of problems will never be solved.
 
 ## Known issue
 
-- Zandronum servers never stop. The log scan and last connection detection function does not work
-- This code does not use a WSGI server. It should not be used as is on a server open to the web
+- Zandronum servers never stop. The log scan and last connection detection function does not work.
+- This code does not use a WSGI server. It should not be used as is on a server open to the web.
+- `cmd.extend(['-servername', '"', servername, '"'])` add space in the server name.
+- The management of the servers from the web page is not implemented. It should be possible with the detection of the IP address to manage its own server.
+- It is not possible to run zandronum-server from the binary in /zanbin. There is a big unresolved dependency problem. It is better to use the installation method explained on the zandronum website ([https://zandronum.com/download#instubuntu](https://zandronum.com/download#instubuntu))
 
 ## Getting Started
 
 ### Prerequisites
 
 - Python 3
-- Zandronum server executable
+- ~~Zandronum server executable~~
 
 ## Installation
 
@@ -37,16 +43,16 @@ A lot of problems will never be solved.
 5. (Optional) Configure the application settings in the `config.py` file.
 6. (Optional) Use the screen command to run in the background
 
-### Installation with docker
+#### Usage
+
+1. Start the server by running `python app.py`.
+2. Open a web browser and go to `http://localhost:6556/`.
+3. Configure the server settings and click the "Launch Server" button.
+4. Wait for the server to start, and then click the "Connect" button to join the server.
+
+### Installation without docker
 
 ```console
 $ docker-compose build
 $ docker-compose up -d
 ```
-
-### Usage
-
-1. Start the server by running `python app.py`.
-2. Open a web browser and go to `http://localhost:5000/`.
-3. Configure the server settings and click the "Launch Server" button.
-4. Wait for the server to start, and then click the "Connect" button to join the server.

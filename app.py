@@ -17,9 +17,9 @@ server_creations = {}
 next_available_port = int(os.environ['next_available_port'])
 last_available_port = int(os.environ['last_available_port'])
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1)
-# Replace this with the path to your Zandronum server executable
 zandronum_server_path = os.environ['zandronum_server_path']
-# Set flags
+
+# Set Zandronum flags
 dmflags = [
     {"value": 1, "description": "Disallow health (In Deathmatch)"},
     {"value": 2, "description": "Disallow powerups (In Deathmatch)"},
